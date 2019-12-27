@@ -23,11 +23,12 @@ const CompaniesDataService = {
     }],
     jobsPageUrl: "https://www.carsales.com.au/work-with-us/join-our-team",
     tech:{
-      dev: [".NET", "ASP.NET", ".NET Core", "ASP.NET Core", "Javascript", "Angular", "React", "Redux", "AWS", "PHP", "Wordpress", "SQL Server", "DynamoDB", "AWS ECS", "Redis", "RabbitMQ"],
+      dev: [".NET", "ASP.NET", ".NET Core", "ASP.NET Core", "Javascript", "Angular", "React", "Redux", "PHP", "Wordpress", "SQL Server"],
       classifications: [".NET", "AWS"],
-      cloud: ["AWS"],
+      cloudPlatforms: ["AWS", "Azure", "Google Cloud"],
+      dataStorage: ["SQL Server", "MySQL", "Redis", "AWS S3", "PostgreSQL"],
       architecture: ["Microservices"],
-      tools: ["Jenkins", "Bamboo", "Octopus", "Elastic APM", "Sumologic", "Bitbucket", "Github", "Stash", "Jira", "Confluence"],
+      tools: ["Jenkins", "Bamboo", "Octopus", "Elastic APM", "Sumologic", "Github"],
       analytics: ["Google Analytics"]
     }
   }

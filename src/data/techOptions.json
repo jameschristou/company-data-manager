@@ -1,0 +1,9 @@
+{
+  "dev": [".NET", ".NET Core", "Angular", "ASP.NET", "ASP.NET Core", "C", "C++", "Java", "Javascript", "Kotlin", "Go", "Groovy", "Objective-C", "PHP", "Powershell", "Python", "R", "React", "React Native", "Redux", "Ruby", "Ruby on Rails", "SQL", "Typescript", "VB", "Webpack", "Wordpress"],
+  "classifications": [".NET", "AWS"],
+  "cloudPlatforms": ["AWS", "Azure", "Google Cloud"],
+  "dataStorage": ["AWS S3", "Cassandra", "CouchDB", "DynamoDB", "Memcached", "MongoDB", "MySQL", "Oracle", "PostgreSQL", "RavenDB", "Redis", "SQL Server"],
+  "architecture": ["Microservices"],
+  "tools": ["Bamboo", "Bitbucket", "Elastic APM", "Github", "Jenkins", "Jira", "Octopus", "Stash", "Sumologic"],
+  "analytics": ["Google Analytics"]
+}
