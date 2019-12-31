@@ -79,8 +79,10 @@ const CompanyDataComponent = () => {
       return options;
     }
 
+    let upperCaseInput = input.toUpperCase();
+
     return options.filter(function(item) {
-      return item.indexOf(input) >= 0;
+      return item.toUpperCase().indexOf(upperCaseInput) >= 0;
     });
   }
 
@@ -91,8 +93,10 @@ const CompanyDataComponent = () => {
       return options;
     }
 
+    let upperCaseInput = input.toUpperCase();
+
     return options.filter(function(item) {
-      return item.indexOf(input) >= 0;
+      return item.toUpperCase().indexOf(upperCaseInput) >= 0;
     });
   }
   
@@ -103,8 +107,10 @@ const CompanyDataComponent = () => {
       return options;
     }
 
+    let upperCaseInput = input.toUpperCase();
+
     return options.filter(function(item) {
-      return item.indexOf(input) >= 0;
+      return item.toUpperCase().indexOf(upperCaseInput) >= 0;
     });
   }
 
