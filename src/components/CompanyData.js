@@ -11,6 +11,8 @@ import {
 import CompaniesDataService from '../services/CompaniesDataService';
 import ReactAutoCompleteTagsInput from "@jchristou/react-autocomplete-tags-input";
 import * as techOptions from '../data/techOptions.json';
+import InlineEdit from '@atlaskit/inline-edit';
+import Textfield from '@atlaskit/textfield';
 
 const CompanyDataComponent = () => {
   // We can use the `useParams` hook here to access
@@ -28,7 +30,7 @@ const CompanyDataComponent = () => {
   }, []);
 
   const addItemToDevList = (item) => {
-    let newCompanyData = Object.assign({}, companyData); 
+    let newCompanyData = Object.assign({}, companyData);
     newCompanyData.tech.dev.push(item);
 
     setCompanyData(newCompanyData);
@@ -114,6 +116,20 @@ const CompanyDataComponent = () => {
     });
   }
 
+  const handleCompanyNameChanged = (evnt) => {
+    let newCompanyData = Object.assign({}, companyData);
+    newCompanyData.name = evnt.target.value;
+    
+    setCompanyData(newCompanyData);
+  }
+
+  const handleCompanyNameChanged2 = (value) => {
+    let newCompanyData = Object.assign({}, companyData);
+    newCompanyData.name = value;
+    
+    setCompanyData(newCompanyData);
+  }
+
   if(companyData == null){
     return (
       <div>Loading.....</div>
@@ -123,18 +139,31 @@ const CompanyDataComponent = () => {
   return (
     <div>
       <h2>Company Details: {companyData.name}</h2>
-      <div>Name: {companyData.name}</div>
-      <div>Id: {companyData.id}</div>
-      <div>Jobs Page Url: {companyData.jobsPageUrl}</div>
-      <div>
-        <h3>Tech</h3>
-        <label>Dev</label>
-        <ReactAutoCompleteTagsInput items={companyData.tech.dev} addItemHandler={addItemToDevList} deleteItemHandler={deleteItemFromDevList} filterOptionsHandler={filterDevOptionsHandler}/>
-        <label>Storage</label>
-        <ReactAutoCompleteTagsInput items={companyData.tech.dataStorage} addItemHandler={addItemToStorageList} deleteItemHandler={deleteItemFromStorageList} filterOptionsHandler={filterStorageOptionsHandler}/>
-        <label>Tools</label>
-        <ReactAutoCompleteTagsInput items={companyData.tech.tools} addItemHandler={addItemToToolsList} deleteItemHandler={deleteItemFromToolsList} filterOptionsHandler={filterToolsOptionsHandler}/>
-      </div>
+      <form>
+        <InlineEdit 
+          defaultValue="Test"
+          label="Inline edit"
+          editView={fieldProps => <Textfield {...fieldProps} autoFocus />}
+          readView={() => (
+            <div>
+              {companyData.name || 'Click to enter value'}
+            </div>
+          )}
+          onConfirm={value => handleCompanyNameChanged2(value)}/>
+        <label>Company Name</label>
+        <input type="text" value={companyData.name} onChange={handleCompanyNameChanged}></input>
+        <div>Id: {companyData.id}</div>
+        <div>Jobs Page Url: {companyData.jobsPageUrl}</div>
+        <div>
+          <h3>Tech</h3>
+          <label>Dev</label>
+          <ReactAutoCompleteTagsInput items={companyData.tech.dev} addItemHandler={addItemToDevList} deleteItemHandler={deleteItemFromDevList} filterOptionsHandler={filterDevOptionsHandler}/>
+          <label>Storage</label>
+          <ReactAutoCompleteTagsInput items={companyData.tech.dataStorage} addItemHandler={addItemToStorageList} deleteItemHandler={deleteItemFromStorageList} filterOptionsHandler={filterStorageOptionsHandler}/>
+          <label>Tools</label>
+          <ReactAutoCompleteTagsInput items={companyData.tech.tools} addItemHandler={addItemToToolsList} deleteItemHandler={deleteItemFromToolsList} filterOptionsHandler={filterToolsOptionsHandler}/>
+        </div>
+      </form>
     </div>
   );
 }

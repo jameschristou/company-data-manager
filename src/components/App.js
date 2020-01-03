@@ -15,6 +15,7 @@ const AppComponent = (props) => {
       <Switch>
         <Route exact path="/">
           <CompaniesListComponent />
+          <CompanyDataComponent />
         </Route>
         <Route path="/companies/:id" children={<CompanyDataComponent />} />
       </Switch>
