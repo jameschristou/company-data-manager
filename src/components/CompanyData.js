@@ -1,4 +1,5 @@
 import '@jchristou/react-autocomplete-tags-input/dist-component/style.css';
+import '@jchristou/react-editable-textfield/dist-component/style.css';
 
 import React, {useState, useEffect} from "react";
 import {
@@ -11,8 +12,7 @@ import {
 import CompaniesDataService from '../services/CompaniesDataService';
 import ReactAutoCompleteTagsInput from "@jchristou/react-autocomplete-tags-input";
 import * as techOptions from '../data/techOptions.json';
-import InlineEdit from '@atlaskit/inline-edit';
-import Textfield from '@atlaskit/textfield';
+import ReactEditableTextfield from "@jchristou/react-editable-textfield";
 
 const CompanyDataComponent = () => {
   // We can use the `useParams` hook here to access
@@ -116,16 +116,9 @@ const CompanyDataComponent = () => {
     });
   }
 
-  const handleCompanyNameChanged = (evnt) => {
+  const handleCompanyNameChanged = (companyName) => {
     let newCompanyData = Object.assign({}, companyData);
-    newCompanyData.name = evnt.target.value;
-    
-    setCompanyData(newCompanyData);
-  }
-
-  const handleCompanyNameChanged2 = (value) => {
-    let newCompanyData = Object.assign({}, companyData);
-    newCompanyData.name = value;
+    newCompanyData.name = companyName;
     
     setCompanyData(newCompanyData);
   }
@@ -140,18 +133,8 @@ const CompanyDataComponent = () => {
     <div>
       <h2>Company Details: {companyData.name}</h2>
       <form>
-        <InlineEdit 
-          defaultValue="Test"
-          label="Inline edit"
-          editView={fieldProps => <Textfield {...fieldProps} autoFocus />}
-          readView={() => (
-            <div>
-              {companyData.name || 'Click to enter value'}
-            </div>
-          )}
-          onConfirm={value => handleCompanyNameChanged2(value)}/>
         <label>Company Name</label>
-        <input type="text" value={companyData.name} onChange={handleCompanyNameChanged}></input>
+        <ReactEditableTextfield value={companyData.name} placeholder="click here to update" updatedTextHandler={handleCompanyNameChanged}/>
         <div>Id: {companyData.id}</div>
         <div>Jobs Page Url: {companyData.jobsPageUrl}</div>
         <div>

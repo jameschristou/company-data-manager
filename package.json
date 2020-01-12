@@ -47,6 +47,7 @@
     "@atlaskit/inline-edit": "^10.0.25",
     "@atlaskit/textfield": "^3.1.4",
     "@jchristou/react-autocomplete-tags-input": "0.0.13",
+    "@jchristou/react-editable-textfield": "0.0.2",
     "axios": "^0.19.0",
     "eslint": "^6.5.1",
     "react": "^16.10.2",
